@@ -1,0 +1,74 @@
+Use Case 4.2: BBC news category classification using SVM (Graded) 
+BBC News dataset includes: 
+• category 
+This is the target variable (the label). 
+It tells you what type of news article it is (e.g., business, politics, sport, tech, 
+entertainment). 
+• filename 
+The original filename of the text document (e.g., 163.txt). 
+Each file contains one news article. It’s just an identifier, not useful for classification 
+itself. 
+• title 
+The headline of the news article. 
+Example: “US data sparks inflation worries”. 
+• content 
+The body text of the news article. 
+Example: “Wholesale prices in the US rose at the fastest …”. 
+We will work with  BBC news for 2004-2005 available at : 
+https://www.kaggle.com/hgultekin/bbcnewsarchive 
+Main Objective of this Activity: 
+This task involves a supervised text classification problem. The input is the news article 
+text (a combination of the title and content), and the output is the corresponding category 
+label. 
+• The title and content are merged into a single field called raw_text to represent the 
+full article. 
+• The objective is to train a machine learning model capable of predicting the correct 
+category based on this text. 
+Instructions:  
+Text Preprocessing with NLTK: 
+This procedure consists of the following points: 
+• Combining the title and the content of the article in one field. (1 point) 
+• Bringing the text to lowercase, breaking it into word tokens. (1 point) 
+• We will leave only letter words (thus removing punctuation and numbers). (1 point) 
+• Apply lemmatization. (1 point) 
+• Delete stop words (1 point) 
+2 
+ 
+You have to use the NLTK library for text preprocessing. 
+import nltk 
+from nltk.corpus import stopwords 
+from nltk.tokenize import word_tokenize 
+from nltk.stem import WordNetLemmatizer 
+You may use the following: 
+nltk.download('punkt') #this tokenizer divides a text into a list of sentences 
+nltk.download('wordnet') #it is a large word database of English Nouns, Adjectives, 
+Adverbs and Verbs 
+nltk.download('stopwords') #commonly used word  
+nltk.download('omw-1.4') #provides access to open wordnets in a variety of 
+languages, all linked to a collaborative Interlingual Index 
+SVM Modeling: 
+This procedure consists of the following: 
+• Split the data into train and test. (1 point) 
+• Vectorize using TfidfVectorizer() from sklearn.feature_extraction.text (1 
+point) 
+• Train a Support Vector Machine classifier on the training data. (1 point) 
+• Evaluate on the test set. (1 point) 
+Test multiple combinations of Vectorization and ML/DL models and compare their 
+performance in predicting the categories of BBC News:  
+Test using pipelines with the following different combinations :  
+1. CountVectorizer + LogisticRegression (1 point) 
+2. TFIDF + LogisticRegression (1 point) 
+3. TFIDF + MLP (NN) (1 point) 
+4. TFIDF + Dense model (Keras fully connected NN) (1 point) 
+5. CountVectorizer + Dense model (Keras fully connected NN) (1 point) 
+6. Word2Vec + BiLSTM (1 point) 
+7. TFIDF + LinearSVC (1 point) 
+8. Then propose other combination (1 point) 
+Evaluate the performance and compare all these different combinations of vectorization and 
+modeling to predict the categories of BBC News (3 points) 
+Deliverable : Notebook + Interpretation of the results + Performance Comparison 
+Note: 
+When using the Keras API (built on top of TensorFlow), ensure compatibility by using 
+Python 3.13.5 or older, as TensorFlow is not yet fully supported on newer Python versions. 
+You can use as well torch instead of keras (the stable builds of PyTorch support up to Python 
+3.13) 
